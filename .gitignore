@@ -1,0 +1,42 @@
+# Node
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Runtime env
+.env
+.env.*
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build output
+dist/
+build/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Caches
+.cache/
+.parcel-cache/
+
+# Uploaded user files
+public/uploads/
+
+# Drizzle/DB migration metadata (ignore local snapshots)
+drizzle/migration/meta/
+
+# Misc
+*.local
+*.log
