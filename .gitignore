@@ -8,7 +8,6 @@ npm-debug.log*
 
 # Runtime env
 .env
-.env.*
 
 # Editor directories and files
 .vscode/
