@@ -143,9 +143,9 @@ export const getProfilePage = async(req,res) => {
     const user = await findUserById(req.user.id);
     if(!user) return res.redirect("/login");
 
-    const userShortLinks = await getAllShortLinks(user.id);
-    // console.log(userShortLinks);
-    
+    const { shortLinks, totalCount } = await getAllShortLinks({ userId: user.id });
+    // console.log(shortLinks, totalCount);
+
     return res.render("auth/profile" , {
         user : {
             id : user.id,
@@ -155,7 +155,9 @@ export const getProfilePage = async(req,res) => {
             hasPassword : Boolean(user.password),
             avatarUrl : user.avatarUrl,
             createdAt : user.createdAt,
-            links : userShortLinks,
+            links : shortLinks,
+            totalLinks : totalCount,
+            totalClicks : 0, // no click tracking column in schema yet
         }
     });
 }

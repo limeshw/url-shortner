@@ -317,9 +317,15 @@ export const sendNewVerifyEmailLink = async({userId,email}) => {
 };
 
 export const updateUserByName = async({userId,name,avatarUrl}) => {
+    const updateFields = { name };
+    // Only include avatarUrl in the update when a new one is provided,
+    // otherwise we'd overwrite the existing Google/GitHub profile photo with null.
+    if (avatarUrl !== undefined) {
+        updateFields.avatarUrl = avatarUrl;
+    }
     return await db
         .update(usersTable)
-        .set({name : name , avatarUrl: avatarUrl})
+        .set(updateFields)
         .where(eq(usersTable.id , userId));
 }
 
